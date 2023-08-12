@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./employee-details.component.css']
 })
 export class EmployeeDetailsComponent {
+  public name: string = "";
+  public employeeId: string = "";
 
+  public addEmployee() {
+    console.log("test");
+    alert(`Employee added ${this.name} ${this.employeeId}`);
+  }
 }
