@@ -1,4 +1,4 @@
-namespace HRService
+namespace HRService.Models
 {
     public class WeatherForecast
     {
