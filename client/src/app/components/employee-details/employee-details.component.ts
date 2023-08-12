@@ -10,7 +10,6 @@ export class EmployeeDetailsComponent {
   public employeeId: string = "";
 
   public addEmployee() {
-    console.log("test");
-    alert(`Employee added ${this.name} ${this.employeeId}`);
+    alert(`Employee added: ${this.name} ${this.employeeId}`);
   }
 }
