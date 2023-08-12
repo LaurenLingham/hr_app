@@ -1,3 +1,4 @@
+using HRService.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HRService.Controllers
