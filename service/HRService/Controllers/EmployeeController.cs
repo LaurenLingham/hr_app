@@ -1,4 +1,5 @@
 ﻿using HRService.Models;
+using HRService.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HRService.Controllers
@@ -7,10 +8,17 @@ namespace HRService.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
+        private readonly IEmployeeService _employeeService;
+
+        public EmployeeController(IEmployeeService employeeService) 
+        { 
+            _employeeService = employeeService;
+        }
+
         [HttpGet]
         public List<Employee> GetEmployees()
         {
-            return new List<Employee>();
+            return _employeeService.GetEmployees();
         }
     }
 }
