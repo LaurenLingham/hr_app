@@ -20,5 +20,13 @@ namespace HRService.Controllers
         {
             return _employeeService.GetEmployees();
         }
+
+        [HttpPost]
+        public IActionResult CreateEmployee(Employee employee)
+        {
+            _employeeService.AddEmployee(employee);
+
+            return StatusCode(201);
+        }
     }
 }
