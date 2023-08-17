@@ -10,8 +10,8 @@ namespace HRService.Controllers
     {
         private readonly IEmployeeService _employeeService;
 
-        public EmployeeController(IEmployeeService employeeService) 
-        { 
+        public EmployeeController(IEmployeeService employeeService)
+        {
             _employeeService = employeeService;
         }
 
@@ -36,11 +36,19 @@ namespace HRService.Controllers
         }
 
         [HttpDelete]
-        public List<Employee> Employee(Employee employee)
+        public IActionResult DeleteEmployee(Employee employee)
         {
-            _employeeService.DeleteEmployee(employee);
+            _employeeService.DeleteEmployeeById(employee.Id);
 
-            return _employeeService.GetEmployees();
+            return NoContent();
+        }
+
+        [HttpPut]
+        public Employee UpdateEmployee(Employee employee)
+        {
+            _employeeService.UpdateEmployee(employee);
+
+            return employee;
         }
     }
 }

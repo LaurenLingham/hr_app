@@ -13,17 +13,27 @@ namespace HRService.Services
 
         public Employee GetEmployeeById(int id)
         {
-            return _employees[id];
-        }
-        public void AddEmployee(Employee employee)
-        {
-            _employees.Add(employee);
+            return _employees.Single(e => e.Id == id);
         }
 
-        public void DeleteEmployee(Employee employee)
+        public void AddEmployee(Employee newEmployee)
         {
-            _employees.Remove(employee);
+            if (!_employees.Exists(e => e.Id == newEmployee.Id))
+            {
+                _employees.Add(newEmployee);
+            }
         }
 
+        public void DeleteEmployeeById(int id)
+        {
+            _employees.Remove(GetEmployeeById(id));
+        }
+
+        public void UpdateEmployee(Employee employee)
+        {
+            var indexToUpdate = _employees.FindIndex(e => e.Id == employee.Id);
+ 
+            _employees[indexToUpdate] = employee;
+        }
     }
 }

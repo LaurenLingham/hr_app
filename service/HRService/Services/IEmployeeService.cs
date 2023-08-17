@@ -5,9 +5,9 @@ namespace HRService.Services
     public interface IEmployeeService
     {
         List<Employee> GetEmployees();
-        Employee GetEmployeeById(int employeeId);
+        Employee GetEmployeeById(int id);
         void AddEmployee(Employee employee);
         void UpdateEmployee(Employee employee);
-        void DeleteEmployee(Employee employee);
+        void DeleteEmployeeById(int id);
     }
 }
