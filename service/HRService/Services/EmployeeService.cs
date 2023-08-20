@@ -1,10 +1,17 @@
-﻿using HRService.Models;
+﻿using HRService.DataAccess;
+using HRService.Models;
 
 namespace HRService.Services
 {
     public class EmployeeService : IEmployeeService
     {
         private static List<Employee> _employees = new List<Employee>();
+        private readonly DatabaseContext _dbContext;
+
+        public EmployeeService(DatabaseContext databaseContext) 
+        {
+            _dbContext = databaseContext;
+        }
 
         public List<Employee> GetEmployees()
         {
@@ -15,9 +22,12 @@ namespace HRService.Services
         {
             return _employees.Single(e => e.Id == id);
         }
-
+        
         public void AddEmployee(Employee newEmployee)
         {
+            _dbContext.Employees.Add(newEmployee);
+            _dbContext.SaveChanges();
+
             if (!_employees.Exists(e => e.Id == newEmployee.Id))
             {
                 _employees.Add(newEmployee);

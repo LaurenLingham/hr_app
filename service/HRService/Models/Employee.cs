@@ -1,8 +1,11 @@
-﻿namespace HRService.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace HRService.Models
 {
     public class Employee
     {
-        public string Name { get; set; }
+        [Key]
         public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
